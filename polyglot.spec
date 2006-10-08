@@ -1,4 +1,5 @@
 Summary:	A compiler front end framework for building Java extensions
+Summary(pl):	Szkielet frontendu kompilatora do tworzenia rozszerzeñ Javy
 Name:		polyglot
 %define	_pre	rc1
 Version:	2.0
@@ -29,6 +30,19 @@ Polyglot has been used for both major and minor language extensions;
 our experience suggests that the cost of implementing an extension
 scales well with the degree to which it modifies Java.
 
+%description -l pl
+Polyglot to wysoce rozszerzalny frontend kompilatora dla jêzyka
+programowania Java. Jest zaimplementowany jako szkielet klasy w Javie
+przy u¿yciu szablonów projektowych promuj±cych rozszerzalno¶æ. Przy
+u¿yciu Polyglota mo¿na implementowaæ rozszerzenia jêzyka bez
+powielania kodu z samego szkieletu. Polyglot jest wykorzystywany do
+implementowania jêzyków dla okre¶lonej dziedziny, badania idei
+projektowych jêzyków, upraszczania Javy dla celów nauczania oraz do
+ró¿nych przekszta³ceñ kodu, takich jak optymalizacja czy wstawianie
+niepowodzeñ. Polyglot s³u¿y zarówno do du¿ych jak i nieznacznych
+rozszerzeñ jêzyka; do¶wiadczenie sugeruje, ¿e koszt implementacji
+rozszerzenia skaluje siê dobrze wraz ze stopniem modyfikacji Javy.
+
 %prep
 %setup -q -n %{name}-%{version}%{_pre}-src
 %patch0 -p1
@@ -52,7 +66,7 @@ install -d $RPM_BUILD_ROOT{%{_javadir}/%{name},%{_bindir}}
 sed -e "s|TOP=.*|TOP='%{_javadir}'|" bin/jlc > $RPM_BUILD_ROOT%{_bindir}/jlc
 sed -e "s|TOP=.*|TOP='%{_javadir}'|" bin/pth > $RPM_BUILD_ROOT%{_bindir}/pth
 
-install lib/{coffer,java_cup,pao,polyglot,pth}.jar $RPM_BUILD_ROOT%{_javadir}/%{name}/
+install lib/{coffer,java_cup,pao,polyglot,pth}.jar $RPM_BUILD_ROOT%{_javadir}/%{name}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -61,4 +75,4 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc CHANGES README
 %attr(755,root,root) %{_bindir}/*
-%{_javadir}/%{name}/*
+%{_javadir}/%{name}
