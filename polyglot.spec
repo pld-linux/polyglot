@@ -1,5 +1,5 @@
 Summary:	A compiler front end framework for building Java extensions
-Summary(pl):	Szkielet frontendu kompilatora do tworzenia rozszerzeñ Javy
+Summary(pl.UTF-8):   Szkielet frontendu kompilatora do tworzenia rozszerzeÅ„ Javy
 Name:		polyglot
 %define	_pre	rc1
 Version:	2.0
@@ -30,18 +30,18 @@ Polyglot has been used for both major and minor language extensions;
 our experience suggests that the cost of implementing an extension
 scales well with the degree to which it modifies Java.
 
-%description -l pl
-Polyglot to wysoce rozszerzalny frontend kompilatora dla jêzyka
+%description -l pl.UTF-8
+Polyglot to wysoce rozszerzalny frontend kompilatora dla jÄ™zyka
 programowania Java. Jest zaimplementowany jako szkielet klasy w Javie
-przy u¿yciu szablonów projektowych promuj±cych rozszerzalno¶æ. Przy
-u¿yciu Polyglota mo¿na implementowaæ rozszerzenia jêzyka bez
+przy uÅ¼yciu szablonÃ³w projektowych promujÄ…cych rozszerzalnoÅ›Ä‡. Przy
+uÅ¼yciu Polyglota moÅ¼na implementowaÄ‡ rozszerzenia jÄ™zyka bez
 powielania kodu z samego szkieletu. Polyglot jest wykorzystywany do
-implementowania jêzyków dla okre¶lonej dziedziny, badania idei
-projektowych jêzyków, upraszczania Javy dla celów nauczania oraz do
-ró¿nych przekszta³ceñ kodu, takich jak optymalizacja czy wstawianie
-niepowodzeñ. Polyglot s³u¿y zarówno do du¿ych jak i nieznacznych
-rozszerzeñ jêzyka; do¶wiadczenie sugeruje, ¿e koszt implementacji
-rozszerzenia skaluje siê dobrze wraz ze stopniem modyfikacji Javy.
+implementowania jÄ™zykÃ³w dla okreÅ›lonej dziedziny, badania idei
+projektowych jÄ™zykÃ³w, upraszczania Javy dla celÃ³w nauczania oraz do
+rÃ³Å¼nych przeksztaÅ‚ceÅ„ kodu, takich jak optymalizacja czy wstawianie
+niepowodzeÅ„. Polyglot sÅ‚uÅ¼y zarÃ³wno do duÅ¼ych jak i nieznacznych
+rozszerzeÅ„ jÄ™zyka; doÅ›wiadczenie sugeruje, Å¼e koszt implementacji
+rozszerzenia skaluje siÄ™ dobrze wraz ze stopniem modyfikacji Javy.
 
 %prep
 %setup -q -n %{name}-%{version}%{_pre}-src
