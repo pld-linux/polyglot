@@ -1,5 +1,5 @@
 Summary:	A compiler front end framework for building Java extensions
-Summary(pl.UTF-8):   Szkielet frontendu kompilatora do tworzenia rozszerzeń Javy
+Summary(pl.UTF-8):	Szkielet frontendu kompilatora do tworzenia rozszerzeń Javy
 Name:		polyglot
 %define	_pre	rc1
 Version:	2.0
