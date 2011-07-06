@@ -1,15 +1,16 @@
 Summary:	A compiler front end framework for building Java extensions
 Summary(pl.UTF-8):	Szkielet frontendu kompilatora do tworzenia rozszerzeń Javy
 Name:		polyglot
-%define	_pre	rc1
-Version:	2.0
-Release:	0.%{_pre}.1
+Version:	2.4.0
+Release:	0.1
 License:	Apache v1.1
 Group:		Development/Languages/Java
-Source0:	http://www.cs.cornell.edu/Projects/polyglot/src/%{name}-%{version}%{_pre}-src.tar.gz
-# Source0-md5:	5d87524f1b836467f47559e88e080f13
+Source0:	http://www.cs.cornell.edu/Projects/polyglot/src/%{name}-%{version}-src.tar.gz
+# Source0-md5:	6a56a2a30ed3b164112a6caaddc6edb3
+Source1:	http://www.cs.cornell.edu/Projects/polyglot/eclipseUpdates/plugins/%{name}_%{version}.jar
+# Source1-md5:	c54716cc0412f08ce2a97e88934d064b
 Patch0:		%{name}-classpath.patch
-URL:		http://www.cs.cornell.edu/Projects/polyglot/src/
+URL:		http://www.cs.cornell.edu/Projects/polyglot/
 BuildRequires:	ant >= 1.6.5-4
 BuildRequires:	jflex
 BuildRequires:	jdk >= 1.3
