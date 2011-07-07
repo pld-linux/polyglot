@@ -1,0 +1,119 @@
+--- polyglot-2.4.0-src/bin/jlc.orig	2008-08-14 17:46:38.000000000 +0200
++++ polyglot-2.4.0-src/bin/jlc	2011-07-07 11:12:26.186199047 +0200
+@@ -1,8 +1,5 @@
+ #!/bin/sh
+ 
+-prg=`basename "$0"`
+-dir=`dirname "$0"`/..
+-
+ usage() {
+   polyglot -h
+   cat <<EOF
+@@ -28,31 +25,12 @@
+   fi
+ }
+ 
+-unixfilename() {
+-  windows=0
+-
+-  if [ `uname | grep -c CYGWIN` -ne 0 ]; then
+-    windows=1
+-  fi
+-
+-  cp="$1"
+-
+-  if [ "$windows" = 1 ]; then 
+-    cygpath -u "$cp"
+-  else
+-    echo "$cp"
+-  fi
+-}
+-
+-
+ extra_cp=
+ args=
+ vmargs=
+ classpath=
+ java=java
+ 
+-dir=`unixfilename "$dir"`
+-
+ while true; do
+     case "$1" in
+         "")
+@@ -98,9 +76,9 @@
+ fi
+ 
+ 
+-classpath="$dir/classes:$dir/lib/polyglot.jar:$dir/lib/java_cup.jar"
++classpath="@dir@:@dir@/polyglot:@dir@/polyglot/polyglot.jar:@dir@/polyglot/java_cup.jar"
+ if [ -n "$ext" ]; then
+-  classpath="$classpath:$dir/lib/$ext.jar"
++  classpath="$classpath:@dir@/polyglot/$ext.jar:@dir@/$ext.jar"
+ fi
+ classpath="$classpath:$extra_cp"
+ classpath=`fixclasspath "$classpath"`
+@@ -115,5 +93,5 @@
+   echo "$java" "$vmargs" -classpath "'$classpath'" polyglot.main.Main -classpath "'$classpath'" "$args"
+ fi
+ 
+-  eval "$java" "$vmargs" -classpath "'$classpath'" polyglot.main.Main -classpath "'$classpath'" "$args"
++exec "$java" "$vmargs" -classpath "'$classpath'" polyglot.main.Main -classpath "'$classpath'" "$args"
+ 
+--- polyglot-2.4.0-src/bin/pth.orig	2008-08-14 17:46:38.000000000 +0200
++++ polyglot-2.4.0-src/bin/pth	2011-07-07 11:11:54.931613263 +0200
+@@ -1,8 +1,5 @@
+ #!/bin/sh
+ 
+-prg=`basename "$0"`
+-dir=`dirname "$0"`/..
+-
+ usage() {
+   polyglot -h
+   cat <<EOF
+@@ -27,19 +24,6 @@
+   fi
+ }
+ 
+-unixfilename() {
+-  if [ `uname | grep -c CYGWIN` -ne 0 ]; then
+-    windows=1
+-  fi
+-
+-  cp="$1"
+-  if [ "$windows" = 1 ]; then 
+-    cygpath -u "$cp"
+-  else
+-    echo "$cp"
+-  fi
+-}
+-
+ unixpath() {
+   if [ `uname | grep -c CYGWIN` -ne 0 ]; then
+     windows=1
+@@ -64,8 +48,6 @@
+   eval "$java" "$vmargs" -classpath "'$classpath'" polyglot.pth.Main "$@"
+ }
+ 
+-dir=`unixfilename "$dir"`
+-
+ while true; do
+     case "$1" in
+         "")
+@@ -103,8 +85,8 @@
+     esac
+ done
+ 
+-classpath="$dir/classes:$dir/lib/polyglot.jar:$dir/lib/java_cup.jar"
+-classpath="$classpath:$dir/tools/pth/classes:$dir/tools/lib/pth.jar"
++classpath="@dir@:@dir@/polyglot:@dir@/polyglot/polyglot.jar:@dir@/polyglot/java_cup.jar"
++classpath="$classpath:@dir@/polyglot/pth.jar"
+ classpath="$classpath:$extra_cp"
+ classpath=`fixclasspath "$classpath"`
+ 
+@@ -117,4 +99,4 @@
+   echo "$java" "$vmargs" -classpath "'$classpath'" polyglot.main.Main "$@"
+ fi
+ 
+-polyglot "$args"
++exec polyglot "$args"
