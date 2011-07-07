@@ -1,8 +1,12 @@
+# 
+# TODO:
+#	- eclipse plugin is missing some files vital to packaging
+#
 Summary:	A compiler front end framework for building Java extensions
 Summary(pl.UTF-8):	Szkielet frontendu kompilatora do tworzenia rozszerzeń Javy
 Name:		polyglot
 Version:	2.4.0
-Release:	0.1
+Release:	0.2
 License:	Apache v1.1
 Group:		Development/Languages/Java
 Source0:	http://www.cs.cornell.edu/Projects/polyglot/src/%{name}-%{version}-src.tar.gz
@@ -84,7 +88,7 @@ export JAVA=%{java}
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_javadir}/%{name},%{_bindir}} \
-	$RPM_BUILD_ROOT%{_eclipseplugindir}/plugins
+	$RPM_BUILD_ROOT%{_eclipseplugindir}/features
 
 sed -e "s|TOP=.*|TOP='%{_javadir}'|" bin/jlc > $RPM_BUILD_ROOT%{_bindir}/jlc
 sed -e "s|TOP=.*|TOP='%{_javadir}'|" bin/pth > $RPM_BUILD_ROOT%{_bindir}/pth
@@ -93,7 +97,7 @@ install lib/{java_cup,polyglot,pth,ppg}.jar $RPM_BUILD_ROOT%{_javadir}/%{name}
 install examples/coffer/lib/coffer.jar $RPM_BUILD_ROOT%{_javadir}/%{name}
 install examples/pao/lib/pao.jar $RPM_BUILD_ROOT%{_javadir}/%{name}
 
-install %{SOURCE1} $RPM_BUILD_ROOT%{_eclipseplugindir}/plugins
+install %{SOURCE1} $RPM_BUILD_ROOT%{_eclipseplugindir}/features
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -104,8 +108,10 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/*
 %{_javadir}/%{name}
 
+%if 0
 %files -n eclipse-polyglot
 %defattr(644,root,root,755)
 %dir %{_eclipseplugindir}
-%dir %{_eclipseplugindir}/plugins
-%{_eclipseplugindir}/plugins/*
+%dir %{_eclipseplugindir}/features
+%{_eclipseplugindir}/features/*
+%endif
