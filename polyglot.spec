@@ -70,7 +70,7 @@ użytkownika.
 
 %prep
 %setup -q -n %{name}-%{version}-src
-%patch0 -p1
+%patch -P0 -p1
 
 %build
 required_jars='ant'
